@@ -1,0 +1,50 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block search%}
+{%csrf_token%}
+<form class="form-inline my-2 my-md-0" method="GET" action="{% url 'searchfile' %}">
+    <input class="form-control" type="text" name="q" placeholder="Поиск">
+</form>
+{%endblock%}
+{%block body%}
+{%block css%}
+<link rel="stylesheet" href="{% static 'base/css/teach.css'%}">
+{%endblock%}
+{%for item in object_list%}
+{% if item != None%}
+<div class="container bg-white body-content">
+    <div class="row body article">
+        {%if item.img%}
+        <div class="col-lg-4 col-sm-12"><img class="img-post" src="{{item.img.url}}" alt=""></div>
+
+        <div class="col-lg-8 col-sm-12 text-center">
+            <h3 style=" padding-top: 30px; color: #746969;">{{item.title}}</h3>
+            <p style="color: #646464;">Тип файла: {{item.typefile}}</p>
+            <p style="color: #646464;">{{item.description}}</p>
+            <button type="button" class="btn btn-light" ><a href="{{item.linkfile}}">Скачать</a></button>
+        </div>
+        {%else%}
+        <div class="col-lg-3 col-sm-12"><img class="img-post" width="100px" src="{% static 'base/img/icons/iconfile.png'%}"></div>
+        <div class="col-lg-9">
+            <h3 style=" padding-top: 30px; color: #746969;">{{item.title}}</h3>
+            <p style="color: #646464;">Тип файла: {{item.typefile}}</p>
+            <p style="color: #646464;">{{item.description}}</p>
+             {% if item.file.url != None%}
+            <button type="button" class="btn btn-danger" ><a href="{% url 'downloadfile' item.pk %}">Скачать</a></button>
+            {% else %}
+            <button type="button" class="btn btn-danger" ><a href="{{item.linkfile}}">Скачать</a></button>
+            {% endif %}
+        </div>
+        {%endif%}
+       <!-- <div class="icons-post">
+            <img src="{% static 'news/img/icons/likeIcon.png' %}">
+            <span>1999,0</span>
+            <img src="{% static 'news/img/icons/eyeIcon.png' %}">
+             <span>1999,0</span>
+        </div>-->
+    </div>
+</div>
+
+{%endif%}
+{%endfor%}
+{%endblock%} 

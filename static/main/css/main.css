@@ -1,0 +1,61 @@
+
+body{
+  
+  height: 100%;
+}
+
+.welcome {
+  background-image: url("../img/back/backWelcom.jpeg");
+  text-align: center;
+  padding: 20em;
+  width: 100%;
+}
+
+.text-welcom{
+    font-weight: 900;
+    font-size: 4em;
+    color: #fff;
+}
+
+@media(max-width: 1280px){
+.welcome {
+  background-image: url("../img/back/backWelcom.jpeg");
+  text-align: center;
+  padding: 15em;
+  width: 100%;
+}
+
+.text-welcom{
+    font-weight: 900;
+    font-size: 3em;
+    color: #fff;
+}
+}
+@media(max-width: 800px){
+.welcome {
+  background-image: url("../img/back/backWelcom.jpeg");
+  text-align: center;
+  padding: 7em;
+  width: 100%;
+}
+
+.text-welcom{
+    font-weight: 900;
+    font-size: 3em;
+    color: #fff;
+}
+}
+@media(max-width: 700px){
+.welcome {
+  background-image: url("../img/back/backWelcom.jpeg");
+  text-align: center;
+  padding: 5em;
+  width: 100%;
+}
+
+.text-welcom{
+    font-weight: 900;
+    font-size: 2em;
+    color: #fff;
+}
+}

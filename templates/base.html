@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Учитель географии</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    {% load static%}
+    <link rel="shortcut icon" href="{% static 'base/img/icons/favicon.png'%}" type="image/icon">
+    {%block css%}
+    {%endblock%}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'base/css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'base/css/post.css'%}">
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-os">
+          <a class="navbar-brand" href="{% url 'home'%}">География</a>
+          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="navbar-collapse collapse" id="navbarsExample03" style="">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link bg-wh" href="{% url 'about'%}">Обо мне</a>
+              </li>
+              <li class="nav-item">
+                 <a class="nav-link bg-wh" href="{% url 'news'%}">Новости</a>
+              </li>
+              <li class="nav-item">
+                 <a class="nav-link bg-wh" href="{% url 'teach'%}">Учителям</a>
+              </li>
+             <!--  <li class="nav-item">
+                 <a class="nav-link bg-wh" href="#">Ученикам</a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link bg-wh" href="#">Родителям</a>
+               </li>-->
+
+            </ul>
+              {%block search%}
+              {% endblock %}
+              <div class="icons">
+                  <a href="{% url 'login' %}"><img src="{% static 'base/img/icons/student.png'%}" alt=""></a>
+            </div>
+          </div>
+        </nav>
+    </div>
+    <div id="content">
+    {% block body %}
+    {% endblock %}
+    </div>
+    <footer>
+        <div class="container-fluid">
+            <div class="row">
+                2019©PyGuDev
+            </div>
+            <div class="row">
+                <div>
+                    <span>Я в социальных сетях:</span>
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAADdklEQVRoge2YXUhTYRzGn/dsLqdmU3Nptb4o7cYyNCg1qKirijAC7aZu6iYqcKG76AuipCl4YUUgRUFESISVRhdFCWWGjSgLLIlVUpvV/MzJ1rZzupgtjmfvme/R0zLO72r7/9+P53n3fg7Q0NDQiCckVoG5ts7tgoAKAIUAktWXBADwQsBzwgl1LvvKZrmCsgayqjrPEMA2tdoYIaTabc87Qk3TEmMjf0sdVWzwAtn2tTavJVqOo1Uamzb/BDrCW2k5qgEABSpoUYQAUkjLyRlIUUGLUmbSEnIGpgWagXijGYg3etYK7bZcLEw3AACCvIDKm1/Q6BiI5J/ZcrFgLP+bDx4/imu7JW2VFaahZsc8JOjC56nT40dJlHJyMP8CxoQ/VfQcwaENmaL8w3c/JHUWz54hiaUadTixJTsiHgBcgwFWOewGXvSMSsTlzzdGvl9+2jehdg6uz4QpSSeKNTz2sMphN9DaLR3h0lWmyGen52fMNpZmzsC+ktmi2JP3I3jwVtp2LJgNtLwehi/Ai2JlBWlITQyPZogX5DskgH3HPBj0f6ZOICTg6B0Xq5Rwe6wV+r1BNL0cEsVSjTrsXpM+ofoHN5ixdon4WVH/8Bu6v/pZpQBQuI1ebPNAGDfQB9ZnIntWArXOogwDSvNNOLzZLIp3uX2of/RdiQwACg10uX1oejkoiqUadThbbkHOHOmOAwBPq3JxfpcFek78BLE1fUEgJD/t5FB8kJ2+14thX0gUK1qSjFZrDlM7JOajVh7FBtxDAZxodk+udwDnyi1IT2Y+TyNM6irR6BiY8L5fVPMOe658Qr83KIpb0gy4sMsCTuEvMem70LE7Ltx7Mxyz3Me+n7jfNYydDR8wMCqeeuuWpeDQRjOlpjyTNsALwP7rPbjW0T+h8m97fdh79ZNk4Vo3mbHKksTc/5TcRv3B8KWu4sZn9I2bItFod3px8q54/eg5guNbspj7Vr56otDoGMDtV0MoL0xDab4Jy7MSYdATtDtHJGUvtfVhrsmAvcUZkQtdkoF9PKlLJ7uqU/nmrALumhVRtU77B41mIN781wakW0e8IKCelHQDAhyqiFEA4elaqAYIJ9SpI4cdniNULVQDLvvKZhBSrY4kBghO9drz7tLTMZhT+XqrjvBWAWQ1/t4/1iNEQAfPkTo58RoaGhrx5xfzIvXn+sbXTAAAAABJRU5ErkJggg==">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAADdklEQVRoge2ZTUwTQRTHf4viBxZI/AI1VMByIcREDeoJReJFwcSPg9QQD2pSDmLUk/FkogdDglUPYjwpCiiJxoA3EOtBI4aLeJIWFQUEDgYKBUWth6GRbXeX3e5ULv0lTTszb+a9/8zOvtkuJEmSJMlCosxnEK7nCFADbAVWJDwiwSTQDVxXPDw2MjQUEK7HC5yRGFg81Ckezus16gqYnfmWhIRklTCHlGqeaDWlGHRb6Jmfi24siw06bYnLVVo2FNWAcx9kukTdmB/6n0HPDZgatj6mwjb9Jh3C9YQtO3JVwq47sFhnr89MwMtT4G+2PLTi0Y7VaAWs4XJD2X0M7wupDihrFL/jEKGF0R4wT1o2lNzGxF1Z2JTcgeVZUlzLEVBUI2Y3wu9peHUWGtZBw3p4fU7URUh1QNFpKa7lCHDuV5ffXIAeL4S+QWgI3l2Drotqm43lUlzLEZCRry4HNK7v3gdRfTZJcS1HgBmURepy+I+UYeUIGO9Tl13uWJuCqLpgX6xNHMi5jfa3warN/8rbr4hvf5P4drmh+LK6z+c2Ka7lJLLlWVDpV9+JjJgJQpMLpkZMu9BLZHIuoalhkWFNaQ6D75Sl4I2Qt4n9zdDhFscFPWaC0F4JgYfS3Mo7SoAQMdApkpRzH2QWiPqxXnGYe39T2sxHkLMHlq0R13/wozn79DyxUtOjpl0kbg8UVkPVILj7oLwdNuwBRWNYJQU2lEF5h7CtGoRCj2339lfg+CgsW62uC32DkS6Y/CrKjhxYUywOfXOZHoW7a80FmrDj9MxErIC0bMg9YK6vTexfQr4T8W3M6VHwnbTt3r6AgefQmC9OoBNf5rcPDUH3JWjcJPraRO4jJQrkH4a9jzSGDkP7UQi0YC7hRY2c0EwcwZEDO66iPS8K7KyFjDypLuUJcDihojP22cCqjUXkCEjPhQO+2MCCn8RnLg6nyAXpuVJc2xewdKWY1eiAgp+gtVR8okWk50LFc1iSadu9fQEFx/SDj6yApog88T+STewL+PFdXdYKWE/Er5Bt90YCzKXJQDP4G0VWHeyE1t2xgcKsiN0w5IOf4/Dh3r8ntvkZ12swygM+oMSshwTzQvFQqtVgtALXExRMPHj1GnQFzL4ZqUtIONaoVTw81Wuc/xXTLQ6iUAMU839fMb0FvEbBJ0mSJMnC8xeZCfv/bBeRgAAAAABJRU5ErkJggg=="></div>
+                
+            </div>
+        </div>
+    </footer>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(61102912, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/61102912" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</body>
+</html>

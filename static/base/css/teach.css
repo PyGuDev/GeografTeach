@@ -1,0 +1,37 @@
+.table-color {
+    background-color: #f9f9f9;
+    color: #525252;
+    margin-bottom: 0 !important;
+}
+.table-color a{
+    color: #525252;
+}
+.btn-success {
+    color: white !important;
+}
+.table td{
+    vertical-align: middle;
+}
+.icons-post{
+    font-size: 14px;
+}
+.icons-post img{
+    width: 20px;
+    height: 20px;
+    margin: 10px 3px 10px 20px;
+}
+button{
+    float: left;
+    margin-bottom: 40px!important;
+    margin-right: 40px!important;
+}
+a {
+    color: white;
+}
+a:hover {
+    color: #bfbcbc;
+    text-decoration: none;
+}
+.img-post{
+    padding: 20px;
+}

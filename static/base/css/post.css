@@ -1,0 +1,16 @@
+.img-post{
+    max-width: 700px;
+}
+.title-category{
+	font-size: 1em;
+	font-weight: bold;
+    
+}
+.category{
+    font-size: 0.8em;
+    padding: 4px;
+    border-radius: 11px 0px;
+    background-color: #8ca4ad;;
+    font-weight: bold;
+    color: #ffffff;
+}

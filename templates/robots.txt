@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /accounts/
+
+User-agent: Yandex
+Disallow: /admin/
+Disallow: /accounts/
+Host: geografteach.ru
