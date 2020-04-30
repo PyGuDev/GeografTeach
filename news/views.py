@@ -17,7 +17,7 @@ class NewsPage(ListView):
         return context
     
     def get_queryset(self):
-        queryset = NewsPost.objects.all()
+        queryset = NewsPost.objects.all().order_by("-pk")
         s = self.request.GET.get("s")
         q = self.request.GET.get("q")
         if q:
