@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'main',
     'teach',
     'news',
+    'homeworkForStudents',
     'ckeditor',
     'ckeditor_uploader',
 ]
