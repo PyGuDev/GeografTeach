@@ -25,7 +25,7 @@ SECRET_KEY = 'oQ35G6GcrnuKvrtLT0WtLqThT6eoyCir8En9EGC8KM7heBLDA2UmyRGQSr0lScWW'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','geografteach.ru', '185.20.224.25', '2a00:f940:2:4:2::1447', '185-20-224-25.cloudvps.regruhosting.ru']
+ALLOWED_HOSTS = ['127.0.0.1','192.168.0.16']
 
 # Application definition
 

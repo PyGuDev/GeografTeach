@@ -8,60 +8,75 @@
 {%endblock%}
 {%block body%}
 {%block css%}
-
+<link rel="stylesheet" href="{%static 'news/css/news.css'%}">
+<script src="{%static 'news/script.js'%}"></script>
 {%endblock%}
 
 <div class="container bg-white body-content">
-    <div class="row body">
-        <form class="form-inline" method="GET">
-          <label class="my-1 mr-2" for="inlineFormCustomSelectPref" style="margin: 10px;font-size: 1.2em;">Сортировать по категориям: </label>
-          <select class="custom-select my-1 mr-sm-2" name="s">
-            <option></option>
-            {%for ct in categorys%}
-            {% if ct != None%}
-            <option >{{ct.name}}</option>
+    <div class="row block-service">
+        <div class="col-lg-10 col-sm-12">
+            <form class="form-inline" method="GET">
+                <label for="forInputSearch" class="search-label">Поиск:</label>
+                <input type="text" name="q" placeholder="География" class="form-control">
+                <button type="submit" class="btn btn-primary">Искать</button>
+            </form>
+            <div class="sorted">
+                <div class="items">
+                    <div class="item-date">
+                        <a href="{% url 'news'%}" id="dateSort">Дата</a>
+                    </div>
+                    <div class="item-popular">
+                        <a href="">Популярное</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-sm-12">
+            <div class="tags">
+                <h3>Категории</h3>
+                {%for itemCat in categorys%}
+                <div class="tag-item">
+                    <span class="categorys">{{itemCat.name}}</span>
+                </div>
+                {%endfor%}
+                
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9 col-sm-12">
+        {%for item in object_list%}
+        {% if item != None%}
+        <div class="row body">
+            {% if item.urlyoutube %}
+            <div class="col-lg-12 col-sm-12 text-center" style="margin-bottom: 20px">
+                <iframe class="youtube" src="https://www.youtube.com/embed/{{item.urlyoutube}}" frameborder="0" align="middle" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
             {%endif%}
-            {%endfor%}
-          </select>
-          <button type="submit" class="btn btn-primary my-1">Сортировать</button>
-        </form>
-        
-    </div>
-</div>
-    {%for item in object_list%}
-    {% if item != None%}
-<div class="container bg-white body-content">
-    <div class="row body">
-        {% if item.urlyoutube %}
-        <div class="col-lg-12 col-sm-12 text-center" style="margin-bottom: 20px">
-            <iframe class="youtube" src="https://www.youtube.com/embed/{{item.urlyoutube}}" frameborder="0" align="middle" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            {%if item.img%}
+            <div class="col-lg-5 col-sm-12"><img class="img-post" src="{{item.img.url}}" alt=""></div>
+            <div class="col-lg-7 col-sm-12 text-center">
+                <h3 style=" padding-top: 30px; color: #746969;">{{item.title}}</h3>
+                <span class="category">{{item.categorys}}</span>
+                <p style="color: #646464;">{{item.textcut | safe}}</p>
+                <button type="button" class="btn btn-light" ><a href="{%url 'newsdetail' pk=item.pk%}">Подробнее</a></button>
+            </div>
+            {%else%}
+            <div class="col-12 text-center">
+                <h3 style=" padding-top: 30px; color: #746969;">{{item.title}}</h3>
+                <span class="category">{{item.categorys}}</span>
+                <p style="color: #646464;">{{item.textcut | safe}}</p>
+                <button type="button" class="btn btn-light btnNext" ><a href="{%url 'newsdetail' pk=item.pk%}">Подробнее</a></button>
+            </div>
+            {%endif%}
+            <div class="icons-post">
+                <img src="{% static 'news/img/icons/likeIcon.png' %}">
+                <span>0</span>
+                <img src="{% static 'news/img/icons/eyeIcon.png' %}">
+                <span>{{item.visite_count}}</span>
+            </div>
         </div>
         {%endif%}
-        {%if item.img%}
-        <div class="col-lg-5 col-sm-12"><img class="img-post" src="{{item.img.url}}" alt=""></div>
-        <div class="col-lg-7 col-sm-12 text-center">
-            <h3 style=" padding-top: 30px; color: #746969;">{{item.title}}</h3>
-            <span class="category">{{item.categorys}}</span>
-            <p style="color: #646464;">{{item.textcut | safe}}</p>
-            <button type="button" class="btn btn-light" ><a href="{%url 'newsdetail' pk=item.pk%}">Подробнее</a></button>
-        </div>
-        {%else%}
-        <div class="col-12 text-center">
-            <h3 style=" padding-top: 30px; color: #746969;">{{item.title}}</h3>
-            <span class="category">{{item.categorys}}</span>
-            <p style="color: #646464;">{{item.textcut | safe}}</p>
-            <button type="button" class="btn btn-light btnNext" ><a href="{%url 'newsdetail' pk=item.pk%}">Подробнее</a></button>
-        </div>
-        {%endif%}
-       <!-- <div class="icons-post">
-            <img src="{% static 'news/img/icons/likeIcon.png' %}">
-            <span>1999,0</span>
-            <img src="{% static 'news/img/icons/eyeIcon.png' %}">
-             <span>1999,0</span>
-        </div>-->
+        {%endfor%}
     </div>
 </div>
-
-{%endif%}
-{%endfor%}
-{%endblock%} 
+{%endblock%}

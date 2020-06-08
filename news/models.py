@@ -24,7 +24,7 @@ class NewsPost(models.Model):
     pub_date = models.DateField(auto_now=True)
     avilable = models.BooleanField(default=True)
     objects = PostManager()
-
+    visite_count = models.IntegerField(blank=True, default=0)
     def __str__(self):
         return self.title
 

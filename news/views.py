@@ -4,8 +4,6 @@ from django.views.generic import ListView, DeleteView
 from django.db.models import Q
 from .models import NewsPost, Category
 
-# Create your views here.
-
 
 class NewsPage(ListView):
     model = NewsPost
@@ -18,6 +16,7 @@ class NewsPage(ListView):
     
     def get_queryset(self):
         queryset = NewsPost.objects.all().order_by("-pk")
+        print(self.request)
         s = self.request.GET.get("s")
         q = self.request.GET.get("q")
         if q:
@@ -26,7 +25,17 @@ class NewsPage(ListView):
             return queryset.filter((Q(categorys__name__icontains=s)))
         return queryset
 
+
 class NewsPageDetail(DeleteView):
     model = NewsPost
     template_name = "news/detail.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pks = self.request.path.rsplit('/')
+        pks = pks[pks.__len__()-2]
+        visit_post = NewsPost.objects.get(pk=pks);
+        visit_post.visite_count += 1
+        visit_post.save() 
+        return context
 
