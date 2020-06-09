@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'homeworkForStudents',
     'ckeditor',
     'ckeditor_uploader',
+    'Acounts'
 ]
 
 MIDDLEWARE = [
